@@ -198,7 +198,7 @@ func (s *MmctlE2ETestSuite) TestImportListIncompleteCmdF() {
 		cmd := &cobra.Command{}
 		userID := "nouser"
 		if c == s.th.SystemAdminClient {
-			user, _, err := s.th.SystemAdminClient.GetMe(context.Background(), "")
+			user, _, err := s.th.SystemAdminClient.GetMe(context.TODO(), "")
 			s.Require().NoError(err)
 			userID = user.Id
 		} else {

@@ -190,7 +190,7 @@ func TestNewAPIv4Client(t *testing.T) {
 		defer os.Unsetenv("HTTP_PROXY")
 
 		client := NewAPIv4Client("http://somethingelse:"+port, false, false)
-		_, _, err = client.GetMe(context.Background(), "")
+		_, _, err = client.GetMe(context.TODO(), "")
 		require.NoError(t, err)
 	})
 }

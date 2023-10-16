@@ -24,7 +24,7 @@ func (s *MmctlUnitTestSuite) TestGetBusyCmd() {
 
 		s.client.
 			EXPECT().
-			GetServerBusy(context.Background()).
+			GetServerBusy(context.TODO()).
 			Return(sbs, &model.Response{}, nil).
 			Times(1)
 
@@ -43,7 +43,7 @@ func (s *MmctlUnitTestSuite) TestGetBusyCmd() {
 
 		s.client.
 			EXPECT().
-			GetServerBusy(context.Background()).
+			GetServerBusy(context.TODO()).
 			Return(sbs, &model.Response{}, nil).
 			Times(1)
 
@@ -58,7 +58,7 @@ func (s *MmctlUnitTestSuite) TestGetBusyCmd() {
 		printer.Clean()
 		s.client.
 			EXPECT().
-			GetServerBusy(context.Background()).
+			GetServerBusy(context.TODO()).
 			Return(nil, &model.Response{}, errors.New("mock error")).
 			Times(1)
 
@@ -79,7 +79,7 @@ func (s *MmctlUnitTestSuite) TestSetBusyCmd() {
 
 		s.client.
 			EXPECT().
-			SetServerBusy(context.Background(), minutes*60).
+			SetServerBusy(context.TODO(), minutes*60).
 			Return(&model.Response{StatusCode: http.StatusOK}, nil).
 			Times(1)
 
@@ -117,7 +117,7 @@ func (s *MmctlUnitTestSuite) TestClearBusyCmd() {
 		printer.Clean()
 		s.client.
 			EXPECT().
-			ClearServerBusy(context.Background()).
+			ClearServerBusy(context.TODO()).
 			Return(&model.Response{StatusCode: http.StatusOK}, nil).
 			Times(1)
 
@@ -132,7 +132,7 @@ func (s *MmctlUnitTestSuite) TestClearBusyCmd() {
 		printer.Clean()
 		s.client.
 			EXPECT().
-			ClearServerBusy(context.Background()).
+			ClearServerBusy(context.TODO()).
 			Return(&model.Response{StatusCode: http.StatusBadRequest}, errors.New("mock error")).
 			Times(1)
 
@@ -150,7 +150,7 @@ func (s *MmctlUnitTestSuite) TestServerVersionCmd() {
 		expectedVersion := "1.23.4.dev"
 		s.client.
 			EXPECT().
-			GetPing(context.Background()).
+			GetPing(context.TODO()).
 			Return("", &model.Response{ServerVersion: expectedVersion}, nil).
 			Times(1)
 
@@ -166,7 +166,7 @@ func (s *MmctlUnitTestSuite) TestServerVersionCmd() {
 
 		s.client.
 			EXPECT().
-			GetPing(context.Background()).
+			GetPing(context.TODO()).
 			Return("", &model.Response{}, errors.New("mock error")).
 			Times(1)
 
@@ -184,7 +184,7 @@ func (s *MmctlUnitTestSuite) TestServerStatusCmd() {
 		expectedStatus := map[string]string{"status": "OK"}
 		s.client.
 			EXPECT().
-			GetPingWithFullServerStatus(context.Background()).
+			GetPingWithFullServerStatus(context.TODO()).
 			Return(expectedStatus, &model.Response{}, nil).
 			Times(1)
 
@@ -200,7 +200,7 @@ func (s *MmctlUnitTestSuite) TestServerStatusCmd() {
 
 		s.client.
 			EXPECT().
-			GetPingWithFullServerStatus(context.Background()).
+			GetPingWithFullServerStatus(context.TODO()).
 			Return(nil, &model.Response{}, errors.New("mock error")).
 			Times(1)
 

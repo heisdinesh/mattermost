@@ -46,7 +46,7 @@ func (s *MmctlE2ETestSuite) TestExtractRunCmdF() {
 		info, err := file.Stat()
 		s.Require().NoError(err)
 
-		us, _, err := s.th.SystemAdminClient.CreateUpload(context.Background(), &model.UploadSession{
+		us, _, err := s.th.SystemAdminClient.CreateUpload(context.TODO(), &model.UploadSession{
 			ChannelId: s.th.BasicChannel.Id,
 			Filename:  info.Name(),
 			FileSize:  info.Size(),
@@ -54,7 +54,7 @@ func (s *MmctlE2ETestSuite) TestExtractRunCmdF() {
 		s.Require().NoError(err)
 		s.Require().NotNil(us)
 
-		_, _, err = s.th.SystemAdminClient.UploadData(context.Background(), us.Id, file)
+		_, _, err = s.th.SystemAdminClient.UploadData(context.TODO(), us.Id, file)
 		s.Require().NoError(err)
 
 		cmd := &cobra.Command{}
